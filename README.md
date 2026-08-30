@@ -45,6 +45,16 @@ eindeutig. Wer sie braucht, schaltet sie einzeln frei.
 
 GPS-Fix · Mobilfunkverbindung · SIM eingelegt
 
+### Schalter
+
+Ein Schalter je konfigurierter WireGuard-Instanz. Der Zustand kommt bei jedem Abruf direkt vom
+Router, folgt also auch Änderungen aus der Router-Oberfläche.
+
+Das Attribut `full_tunnel` weist aus, ob die Peers `0.0.0.0/0` oder `::/0` routen — dann läuft
+eingeschaltet **der gesamte** Verkehr des Routers durch den Tunnel, nicht nur der ins entfernte
+Netz. Die Integration verhindert das nicht; sie macht es sichtbar, damit eine Oberfläche davor
+warnen kann.
+
 ---
 
 ## Installation
@@ -163,5 +173,8 @@ ist also nicht nötig.
 
 ## Stand
 
-Version 0.1.0 — Sensoren und binäre Sensoren. Der WireGuard-Schalter ist im Client bereits
-vorbereitet (`async_get_wireguard`, `async_set_wireguard_enabled`) und folgt als nächstes.
+Version 0.1.2 — Sensoren, binäre Sensoren, WireGuard-Schalter und lokale Marken-Assets.
+
+Nicht enthalten und vorerst nicht geplant: Backup und Firmware-Aktualisierung. Beide Endpunkte
+antworten am RUTC50 mit `403`, obwohl sich das Konto als `group: admin` anmeldet — ohne geklärte
+Rechtelage ist dort nichts zu bauen.
