@@ -1,9 +1,19 @@
 # Teltonika RutOS für Home Assistant
 
+<img src="custom_components/teltonika_rutos/brand/icon.png" alt="" width="96" align="right">
+
 Home-Assistant-Integration für Teltonika-Router über die **native RutOS-REST-API**.
 
 Entwickelt und getestet am **RUTC50** mit RutOS `7.24.1` (API 1.16.1). Andere RutOS-Geräte
 sollten funktionieren — mit einer Einschränkung, siehe [Andere Modelle](#andere-modelle).
+
+[![Repository zu HACS hinzufügen](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=omc69&repository=ha-teltonika-rutos-api&category=integration)
+
+[![Integration einrichten](https://my.home-assistant.io/badges/config_flow_start.svg)](https://my.home-assistant.io/redirect/config_flow_start/?domain=teltonika_rutos)
+
+![HACS Custom](https://img.shields.io/badge/HACS-Custom-41BDF5.svg)
+![Version](https://img.shields.io/github/v/release/omc69/ha-teltonika-rutos-api)
+![Lizenz](https://img.shields.io/github/license/omc69/ha-teltonika-rutos-api)
 
 ---
 
@@ -61,10 +71,19 @@ warnen kann.
 
 ### Über HACS
 
+Am schnellsten über den Knopf oben — er öffnet das Repository direkt in deiner HACS-Instanz.
+Danach herunterladen und Home Assistant neu starten.
+
+Von Hand:
+
 1. HACS → **Benutzerdefinierte Repositories** → `https://github.com/omc69/ha-teltonika-rutos-api`,
    Kategorie **Integration**
-2. **Teltonika RutOS** installieren, Home Assistant neu starten
+2. **Teltonika RutOS** herunterladen, Home Assistant neu starten
 3. **Einstellungen → Geräte & Dienste → Integration hinzufügen → Teltonika RutOS**
+
+> **Eine Aktualisierung wird nicht angeboten?** HACS fragt eigene Repositories nur etwa alle
+> 48 Stunden bei GitHub nach. Repository in HACS öffnen → **⋮ → Update information** erzwingt
+> den Abgleich.
 
 ### Manuell
 
