@@ -1,0 +1,145 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Teltonika RutOS Router",
+        "description": "Aktiviere zuerst die REST-API am Router: Dienste → API.",
+        "data": {
+          "host": "IP-Adresse oder Hostname",
+          "username": "Benutzername",
+          "password": "Passwort",
+          "verify_ssl": "TLS-Zertifikat prüfen"
+        },
+        "data_description": {
+          "verify_ssl": "RutOS liefert ein selbstsigniertes Zertifikat. Lass die Option aus, sofern du kein eigenes eingespielt hast."
+        }
+      },
+      "reauth_confirm": {
+        "title": "Neu anmelden",
+        "description": "Der Router unter {host} hat die gespeicherten Zugangsdaten abgelehnt.",
+        "data": {
+          "username": "Benutzername",
+          "password": "Passwort"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Der Router ist unter dieser Adresse nicht erreichbar.",
+      "invalid_auth": "Der Router hat diese Zugangsdaten abgelehnt.",
+      "not_rutos": "Unter dieser Adresse antwortet etwas, aber kein RutOS-Gerät.",
+      "unknown": "Unerwarteter Fehler. Einzelheiten stehen im Protokoll."
+    },
+    "abort": {
+      "already_configured": "Dieser Router ist bereits eingerichtet.",
+      "reauth_successful": "Neuanmeldung erfolgreich."
+    }
+  },
+  "entity": {
+    "sensor": {
+      "gps_latitude": {
+        "name": "GPS Breitengrad"
+      },
+      "gps_longitude": {
+        "name": "GPS Längengrad"
+      },
+      "gps_altitude": {
+        "name": "GPS Höhe"
+      },
+      "gps_speed": {
+        "name": "GPS Geschwindigkeit"
+      },
+      "gps_accuracy": {
+        "name": "GPS Genauigkeit"
+      },
+      "gps_satellites": {
+        "name": "GPS Satelliten"
+      },
+      "gps_heading": {
+        "name": "GPS Kurs"
+      },
+      "signal": {
+        "name": "Mobilfunk Signal"
+      },
+      "signal_quality": {
+        "name": "Signalqualität"
+      },
+      "rsrp": {
+        "name": "RSRP"
+      },
+      "rsrq": {
+        "name": "RSRQ"
+      },
+      "sinr": {
+        "name": "SINR"
+      },
+      "operator": {
+        "name": "Netzbetreiber"
+      },
+      "connection_type": {
+        "name": "Verbindungstyp"
+      },
+      "connection_state": {
+        "name": "Verbindungsstatus"
+      },
+      "operator_state": {
+        "name": "Netzregistrierung"
+      },
+      "band": {
+        "name": "Frequenzband"
+      },
+      "cell_id": {
+        "name": "Funkzelle"
+      },
+      "active_sim": {
+        "name": "Aktive SIM"
+      },
+      "sim_state": {
+        "name": "SIM-Status"
+      },
+      "modem_temperature": {
+        "name": "Modem-Temperatur"
+      },
+      "modem_rx": {
+        "name": "Modem empfangen"
+      },
+      "modem_tx": {
+        "name": "Modem gesendet"
+      },
+      "imei": {
+        "name": "IMEI"
+      },
+      "imsi": {
+        "name": "IMSI"
+      },
+      "iccid": {
+        "name": "ICCID"
+      }
+    },
+    "binary_sensor": {
+      "gps_fix": {
+        "name": "GPS-Fix"
+      },
+      "mobile_connected": {
+        "name": "Mobilfunkverbindung"
+      },
+      "sim_inserted": {
+        "name": "SIM eingelegt"
+      }
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Optionen",
+        "data": {
+          "scan_interval": "Abfrageintervall (Sekunden)"
+        }
+      }
+    }
+  },
+  "exceptions": {
+    "wireguard_switch_failed": {
+      "message": "WireGuard-Instanz {instance} konnte nicht geschaltet werden: {error}"
+    }
+  }
+}

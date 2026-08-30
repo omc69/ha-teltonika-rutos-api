@@ -1,0 +1,145 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Teltonika RutOS router",
+        "description": "Enable the REST API on the router first: Services → API.",
+        "data": {
+          "host": "IP address or hostname",
+          "username": "Username",
+          "password": "Password",
+          "verify_ssl": "Verify TLS certificate"
+        },
+        "data_description": {
+          "verify_ssl": "RutOS ships a self-signed certificate. Leave this off unless you installed your own."
+        }
+      },
+      "reauth_confirm": {
+        "title": "Re-authenticate",
+        "description": "The router at {host} rejected the stored credentials.",
+        "data": {
+          "username": "Username",
+          "password": "Password"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Cannot reach the router at this address.",
+      "invalid_auth": "The router rejected these credentials.",
+      "not_rutos": "This address answered, but it does not look like a RutOS device.",
+      "unknown": "Unexpected error. See the log for details."
+    },
+    "abort": {
+      "already_configured": "This router is already set up.",
+      "reauth_successful": "Re-authentication succeeded."
+    }
+  },
+  "entity": {
+    "sensor": {
+      "gps_latitude": {
+        "name": "GPS latitude"
+      },
+      "gps_longitude": {
+        "name": "GPS longitude"
+      },
+      "gps_altitude": {
+        "name": "GPS altitude"
+      },
+      "gps_speed": {
+        "name": "GPS speed"
+      },
+      "gps_accuracy": {
+        "name": "GPS accuracy"
+      },
+      "gps_satellites": {
+        "name": "GPS satellites"
+      },
+      "gps_heading": {
+        "name": "GPS heading"
+      },
+      "signal": {
+        "name": "Mobile signal"
+      },
+      "signal_quality": {
+        "name": "Signal quality"
+      },
+      "rsrp": {
+        "name": "RSRP"
+      },
+      "rsrq": {
+        "name": "RSRQ"
+      },
+      "sinr": {
+        "name": "SINR"
+      },
+      "operator": {
+        "name": "Operator"
+      },
+      "connection_type": {
+        "name": "Connection type"
+      },
+      "connection_state": {
+        "name": "Connection state"
+      },
+      "operator_state": {
+        "name": "Operator state"
+      },
+      "band": {
+        "name": "Band"
+      },
+      "cell_id": {
+        "name": "Cell ID"
+      },
+      "active_sim": {
+        "name": "Active SIM"
+      },
+      "sim_state": {
+        "name": "SIM state"
+      },
+      "modem_temperature": {
+        "name": "Modem temperature"
+      },
+      "modem_rx": {
+        "name": "Modem received"
+      },
+      "modem_tx": {
+        "name": "Modem sent"
+      },
+      "imei": {
+        "name": "IMEI"
+      },
+      "imsi": {
+        "name": "IMSI"
+      },
+      "iccid": {
+        "name": "ICCID"
+      }
+    },
+    "binary_sensor": {
+      "gps_fix": {
+        "name": "GPS fix"
+      },
+      "mobile_connected": {
+        "name": "Mobile connection"
+      },
+      "sim_inserted": {
+        "name": "SIM inserted"
+      }
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Options",
+        "data": {
+          "scan_interval": "Polling interval (seconds)"
+        }
+      }
+    }
+  },
+  "exceptions": {
+    "wireguard_switch_failed": {
+      "message": "Could not switch WireGuard instance {instance}: {error}"
+    }
+  }
+}
