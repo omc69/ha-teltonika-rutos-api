@@ -25,6 +25,8 @@ from .api import (
     RutosError,
 )
 from .const import (
+    CONF_DEVICE_ID,
+    CONF_MODEL,
     CONF_VERIFY_SSL,
     DEFAULT_SCAN_INTERVAL,
     DOMAIN,
@@ -50,7 +52,7 @@ STEP_USER_SCHEMA = vol.Schema(
 class TeltonikaConfigFlow(ConfigFlow, domain=DOMAIN):
     """Handle setup and reauthentication."""
 
-    VERSION = 1
+    VERSION = 2
 
     def __init__(self) -> None:
         """Initialise the flow."""
@@ -76,7 +78,11 @@ class TeltonikaConfigFlow(ConfigFlow, domain=DOMAIN):
                 title = info.get("device_name") or info.get("device_model") or "Teltonika"
                 return self.async_create_entry(
                     title=title,
-                    data={**user_input, "model": info.get("device_model")},
+                    data={
+                        **user_input,
+                        CONF_MODEL: info.get("device_model"),
+                        CONF_DEVICE_ID: identifier,
+                    },
                 )
 
         return self.async_show_form(

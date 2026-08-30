@@ -7,7 +7,7 @@ from typing import Any
 from homeassistant.helpers.device_registry import DeviceInfo
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
-from .const import DOMAIN, MANUFACTURER
+from .const import CONF_DEVICE_ID, CONF_MODEL, DOMAIN, MANUFACTURER
 from .coordinator import TeltonikaConfigEntry, TeltonikaCoordinator
 
 
@@ -22,12 +22,15 @@ class TeltonikaEntity(CoordinatorEntity[TeltonikaCoordinator]):
         """Initialise the entity and attach it to the router device."""
         super().__init__(coordinator)
         self._entry = entry
-        self._attr_unique_id = f"{entry.entry_id}_{key}"
+        # Fall back to the entry id only for entries created before the
+        # device identifier was stored; async_migrate_entry backfills it.
+        device_id = entry.data.get(CONF_DEVICE_ID) or entry.entry_id
+        self._attr_unique_id = f"{device_id}_{key}"
         self._attr_device_info = DeviceInfo(
-            identifiers={(DOMAIN, entry.entry_id)},
+            identifiers={(DOMAIN, device_id)},
             manufacturer=MANUFACTURER,
             name=entry.title,
-            model=entry.data.get("model"),
+            model=entry.data.get(CONF_MODEL),
             configuration_url=coordinator.client.base_url,
         )
 

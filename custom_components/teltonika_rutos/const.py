@@ -9,6 +9,13 @@ MANUFACTURER: Final = "Teltonika Networks"
 
 CONF_VERIFY_SSL: Final = "verify_ssl"
 
+# Stable per-device identifier from unauthorized/status. Entity unique_ids are
+# built from this, NOT from the config entry id: an entry id changes whenever
+# the integration is removed and re-added, which would orphan every entity and
+# silently break dashboards and automations.
+CONF_DEVICE_ID: Final = "device_identifier"
+CONF_MODEL: Final = "model"
+
 DEFAULT_SCAN_INTERVAL: Final = 30
 MIN_SCAN_INTERVAL: Final = 10
 MAX_SCAN_INTERVAL: Final = 600

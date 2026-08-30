@@ -1,7 +1,7 @@
 {
   "domain": "teltonika_rutos",
   "name": "Teltonika RutOS",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "documentation": "https://github.com/omc69/ha-teltonika-rutos-api",
   "issue_tracker": "https://github.com/omc69/ha-teltonika-rutos-api/issues",
   "codeowners": [

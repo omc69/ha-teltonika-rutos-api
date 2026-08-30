@@ -156,24 +156,23 @@ RUTOS_HOST=192.168.1.1 RUTOS_USER=... RUTOS_PASS=... .venv/bin/python scripts/sm
 
 ---
 
-## Markenbild
+## Markenbild und Home Assistant
 
-Icon und Logo liegen als lokale Marken-Assets im Repository unter
-`custom_components/teltonika_rutos/brand/`. HACS prüft genau diesen Pfad und greift nur dann auf
-das zentrale `home-assistant/brands`-Repository zurück, wenn er fehlt — ein Pull Request dorthin
-ist also nicht nötig.
+Seit HA das Markenbild über den eigenen Endpunkt `/api/brands/integration/{domain}/…` ausliefert,
+prüft das Backend **zuerst das lokale `brand`-Verzeichnis der Integration** und greift erst danach
+auf das CDN zurück (`homeassistant/components/brands/__init__.py`):
 
-| Datei | Größe |
-|---|---|
-| `icon.png` | 256 × 256 |
-| `icon@2x.png` | 512 × 512 |
-| `logo.png` · `logo@2x.png` | identisch, da die Marke quadratisch ist |
+```python
+brand_dir = Path(integration.file_path) / "brand"
+# 1. Try custom integration local files
+# 2. Try cache / CDN
+```
 
----
+Ein Pull Request gegen `home-assistant/brands` ist damit nicht nötig.
 
 ## Stand
 
-Version 0.1.2 — Sensoren, binäre Sensoren, WireGuard-Schalter und lokale Marken-Assets.
+Version 0.2.0 — Sensoren, binäre Sensoren, WireGuard-Schalter, lokale Marken-Assets.
 
 Nicht enthalten und vorerst nicht geplant: Backup und Firmware-Aktualisierung. Beide Endpunkte
 antworten am RUTC50 mit `403`, obwohl sich das Konto als `group: admin` anmeldet — ohne geklärte
