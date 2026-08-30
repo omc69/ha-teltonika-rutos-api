@@ -146,6 +146,21 @@ RUTOS_HOST=192.168.1.1 RUTOS_USER=... RUTOS_PASS=... .venv/bin/python scripts/sm
 
 ---
 
+## Markenbild
+
+Icon und Logo liegen als lokale Marken-Assets im Repository unter
+`custom_components/teltonika_rutos/brand/`. HACS prüft genau diesen Pfad und greift nur dann auf
+das zentrale `home-assistant/brands`-Repository zurück, wenn er fehlt — ein Pull Request dorthin
+ist also nicht nötig.
+
+| Datei | Größe |
+|---|---|
+| `icon.png` | 256 × 256 |
+| `icon@2x.png` | 512 × 512 |
+| `logo.png` · `logo@2x.png` | identisch, da die Marke quadratisch ist |
+
+---
+
 ## Stand
 
 Version 0.1.0 — Sensoren und binäre Sensoren. Der WireGuard-Schalter ist im Client bereits
