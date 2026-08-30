@@ -36,8 +36,16 @@ DATA_GPS: Final = "gps"
 DATA_MODEM: Final = "modem"
 DATA_INTERFACES: Final = "interfaces"
 
-# Interfaces that carry no useful traffic counters.
-IGNORED_INTERFACES: Final = frozenset({"loopback", "lo"})
+# Interfaces that carry no useful traffic counters, matched on ``id``.
+# Note: on RutOS the loopback reports ``type: "ethernet"`` like everything
+# else, so the type field cannot be used to recognise it.
+IGNORED_INTERFACE_IDS: Final = frozenset({"loopback", "lo"})
+
+# Sub-interfaces (the IPv4/IPv6 halves of one physical link, e.g.
+# ``mob1s1a1_4`` and ``mob1s1a1_6``) report ``network_type: "-"`` and carry
+# counters identical to their parent. Counting them would show the same
+# traffic three times.
+SUBINTERFACE_NETWORK_TYPES: Final = frozenset({"-", "", None})
 
 # Field names whose values must never leave the instance: personal identifiers
 # and secrets. Applied to diagnostics downloads and to debug logging.

@@ -20,7 +20,7 @@ from .api import (
     RutosNotSupportedError,
     RutosPermissionError,
 )
-from .const import DOMAIN, IGNORED_INTERFACES
+from .const import DOMAIN, IGNORED_INTERFACE_IDS, SUBINTERFACE_NETWORK_TYPES
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -129,7 +129,8 @@ class TeltonikaCoordinator(DataUpdateCoordinator[RutosData]):
             for iface in interfaces
             if isinstance(iface, dict)
             and iface.get("id")
-            and iface.get("type") not in IGNORED_INTERFACES
+            and iface["id"] not in IGNORED_INTERFACE_IDS
+            and iface.get("network_type") not in SUBINTERFACE_NETWORK_TYPES
         }
         data.wireguard = {
             instance["id"]: instance
